@@ -44,6 +44,14 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+    
+    ofDrawBitmapString("elapsed time: "+ofToString(ofGetElapsedTimeMillis()), 20, 200);
+    if(myRectangle.pos.x == 0){
+        ofDrawBitmapString("start time: "+ofToString(ofGetElapsedTimeMillis()), 20, 250);
+    }else if(myRectangle.pos.x == ofGetWidth()){
+        ofDrawBitmapString("end time: "+ofToString(ofGetElapsedTimeMillis()), 20, 300);
+    }
+    
 	myRectangle.draw();
 }
 

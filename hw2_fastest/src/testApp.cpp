@@ -30,11 +30,9 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-	
-	// to see pct in the console
-	//printf("%f \n", pct);
-    //0.000001f;
-	pct += 0.03f;							// increase by a certain amount
+    
+
+	pct += 0.029f;							// increase by a certain amount
 	if (pct > 1) {
 		pct = 0;							// just between 0 and 1 (0% and 100%)
 	}	
@@ -44,6 +42,15 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
+    ofSetColor(255, 255, 255);
+    
+    ofDrawBitmapString("elapsed time: "+ofToString(ofGetElapsedTimeMillis()), 20, 200);
+    if(myRectangle.pos.x == 0){
+        ofDrawBitmapString("start time: "+ofToString(ofGetElapsedTimeMillis()), 20, 250);
+    }else if(myRectangle.pos.x == ofGetWidth()){
+        ofDrawBitmapString("end time: "+ofToString(ofGetElapsedTimeMillis()), 20, 300);
+    }
+    
 	myRectangle.draw();
 }
 
