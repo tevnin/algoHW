@@ -12,7 +12,7 @@ void testApp::setup(){
 	
 	// set background: 
 	
-	ofBackground(30,30,30);
+	ofBackground(200,200,200);
 	
 	
 	// set the "a" and "b" positions of the rectangle...
@@ -42,7 +42,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    ofSetColor(255, 255, 255);
+    //ofSetColor(255, 255, 255);
     
     ofDrawBitmapString("elapsed time: "+ofToString(ofGetElapsedTimeMillis()), 20, 200);
     if(myRectangle.pos.x == 0){

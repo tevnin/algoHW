@@ -25,9 +25,12 @@ class circle {
         ofPoint posB;
         float pct;
         
-        float radius;
-        float radiusA;
-        float radiusB;
+        float width;
+        float widthA;
+        float widthB;
+    
+        int r,g,b;
+        float rA,rB,gA,gB,bA,bB;
 
 
 };

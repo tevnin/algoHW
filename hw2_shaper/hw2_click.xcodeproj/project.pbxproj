@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		27B349C1141E4131002895AB /* flower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27B349C0141E4131002895AB /* flower.cpp */; };
 		27EDC4901418E298001F047E /* circle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27EDC48F1418E298001F047E /* circle.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -59,8 +58,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		27B349C0141E4131002895AB /* flower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = flower.cpp; sourceTree = "<group>"; };
-		27B349C2141E413D002895AB /* flower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = flower.h; sourceTree = "<group>"; };
 		27EDC48E1418E28C001F047E /* circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = circle.h; sourceTree = "<group>"; };
 		27EDC48F1418E298001F047E /* circle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = circle.cpp; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -183,8 +180,6 @@
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
 				27EDC48E1418E28C001F047E /* circle.h */,
 				27EDC48F1418E298001F047E /* circle.cpp */,
-				27B349C0141E4131002895AB /* flower.cpp */,
-				27B349C2141E413D002895AB /* flower.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -285,7 +280,6 @@
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				27EDC4901418E298001F047E /* circle.cpp in Sources */,
-				27B349C1141E4131002895AB /* flower.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

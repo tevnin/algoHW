@@ -2,7 +2,6 @@
 
 #include "ofMain.h"
 #include "circle.h"
-#include "flower.h"
 
 class testApp : public ofBaseApp{
 
@@ -21,14 +20,16 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
         
-        
-        flower myFlower;
-        circle myCircle;
+        vector<circle> myCircle;
         float pct;
     
         int lastMouseX;
         int lastMouseY;
         bool mouseCount;
+    
+    int pumpUp;
+    int pumpDown;
+    int lastTime;
         
 		
 };

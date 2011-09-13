@@ -12,7 +12,7 @@ void testApp::setup(){
 	
 	// set background: 
 	
-	ofBackground(30,30,30);
+	ofBackground(200,200,200);
 	
 	
 	// set the "a" and "b" positions of the rectangle...

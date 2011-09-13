@@ -6,18 +6,27 @@ void testApp::setup(){
     ofSetVerticalSync(true);
     ofBackground(200,200,200);
     
-    lastMouseX = 0;
-    lastMouseY = 0;
+    lastMouseX = 100;
+    lastMouseY = 100;
     
-    myCircle.posA.x = lastMouseX;
-    myCircle.posA.y = lastMouseY;
-    myCircle.posB.x = 400;
-    myCircle.posB.y = 400;
-    myCircle.radiusA = 10;
-    myCircle.radiusB = 100;
+    for(int i=0; i<100; i++){
+        myCircle.push_back( circle () );
+        
+        myCircle[i].pos.x = i*100;
+        myCircle[i].pos.y = 100;
+        myCircle[i].widthA = 10;
+        myCircle[i].widthB = 100;
+        myCircle[i].rA = i*30;
+        myCircle[i].rB = 255;
+        myCircle[i].gA = i*30;
+        myCircle[i].gB = 0;
+        myCircle[i].bA = i*30;
+        myCircle[i].bB = 127;
+        myCircle[i].interpolateByPct(0);
+    }
     
     
-    myCircle.interpolateByPct(0);
+    
     pct = 0;
     
     mouseCount = false;
@@ -27,8 +36,12 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
     
-    lastMouseX = myCircle.pos.x;
-    lastMouseY = myCircle.pos.y;
+    for(int i=0; i<myCircle.size(); i++){
+        lastMouseX = myCircle[i].widthA;
+        lastMouseY = myCircle[i].widthB;
+        
+        myCircle[i].interpolateByPct(pct);
+    }
 
     
     pct+=0.005f;
@@ -37,19 +50,17 @@ void testApp::update(){
 	}	
     //pct+=(float)abs(myCircle.posA.x - myCircle.posB.x)/100;
     
-    myCircle.interpolateByPct(pct);
+    
 
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
     
+    for(int i=0; i<myCircle.size(); i++){
+        myCircle[i].draw();
+    }
     
-    
-    myFlower.draw();
-    myCircle.draw();
-    
-
 }
 
 //--------------------------------------------------------------
@@ -81,20 +92,28 @@ void testApp::mousePressed(int x, int y, int button){
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button){
     
-    myFlower.pos.x = x;
-    myFlower.pos.y = y;
-    
-    myCircle.posA.x = lastMouseX;
-    myCircle.posA.y = lastMouseY;
-    myCircle.posB.x = x;
-    myCircle.posB.y = y;
-    
-    if(mouseCount){
-        myCircle.radiusA = myCircle.radius;
-        myCircle.radiusB = 100;
-    }else{
-        myCircle.radiusA = myCircle.radius;
-        myCircle.radiusB = 10;
+    for(int i=0; i<myCircle.size(); i++){
+        
+        if(mouseCount){
+            myCircle[i].widthA = myCircle[i].width;
+            myCircle[i].widthB = 100;            
+            myCircle[i].rA = myCircle[i].r;
+            myCircle[i].rB = 255;
+            myCircle[i].gA = myCircle[i].g;
+            myCircle[i].gB = 0;
+            myCircle[i].bA = myCircle[i].b;
+            myCircle[i].bB = 127;
+        }else{
+            myCircle[i].widthA = myCircle[i].width;
+            myCircle[i].widthB = 10;
+            myCircle[i].rA = myCircle[i].r;
+            myCircle[i].rB = i*30;
+            myCircle[i].gA = myCircle[i].g;
+            myCircle[i].gB = i*30;
+            myCircle[i].bA = myCircle[i].b;
+            myCircle[i].bB = i*30;
+            
+        }
     }
     
     mouseCount = !mouseCount;
