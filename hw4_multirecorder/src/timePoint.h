@@ -13,12 +13,10 @@
 
 #include "ofMain.h"
 
-class timePoint {
+class timePoint : ofPoint{
 
 	public: 
 	
-		float x;
-		float y;
 		float t;
 	
 	

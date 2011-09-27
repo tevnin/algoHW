@@ -16,7 +16,7 @@ void timePointRecorder::setup(){
 
 //-------------------------------------------------
 void timePointRecorder::clear(){
-	pts.clear();
+	//pts.clear();
 }
 
 //-------------------------------------------------
@@ -32,7 +32,7 @@ void timePointRecorder::draw(){
 
 //-------------------------------------------------
 void timePointRecorder::startDrawing(float x, float y){
-	clear();
+	//clear();
 	bRecording = true;
 	startTime = ofGetElapsedTimef();
 	timePoint temp;

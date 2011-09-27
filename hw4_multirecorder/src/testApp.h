@@ -26,6 +26,9 @@ class testApp : public ofBaseApp{
         timePointRecorder       TPR2;
 		float					playbackStartTime;
 		
+        bool newRecorder;
+    
+        ofSoundPlayer loopingSound;
 	
 };
 

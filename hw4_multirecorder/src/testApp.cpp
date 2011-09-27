@@ -9,6 +9,13 @@ void testApp::setup(){
 	TPR.setup();
     TPR2.setup();
 	playbackStartTime = 0;
+    
+    newRecorder = false;
+    
+    loopingSound.loadSound("drawbar_c4_a.aif");
+	loopingSound.setVolume(0);
+	loopingSound.setLoop(true);
+	loopingSound.play();
 	
 }
 
@@ -22,10 +29,6 @@ void testApp::update(){
 void testApp::draw(){
 
 	
-	// -------------------------- draw the line
-	//TPR.draw();
-    //TPR2.draw();
-	
 	// -------------------------- draw the point at the current time
 	if (TPR.bHaveADrawing()){			// if we have a drawing to work with
 		
@@ -37,7 +40,7 @@ void testApp::draw(){
 			timeToCheck -= TPR.getDuration();
 		}
         
-        float timeToCheck_2 = ofGetElapsedTimef() - playbackStartTime + 1.0;
+        float timeToCheck_2 = ofGetElapsedTimef() - playbackStartTime + 2.0;
 		while (timeToCheck_2 > TPR2.getDuration() && TPR2.getDuration() > 0){
 			timeToCheck_2 -= TPR2.getDuration();
 		}
@@ -60,14 +63,26 @@ void testApp::draw(){
         
         float lengthOfVel_2 = ofDist(0,0,vel_2.x, vel_2.y);
         float lengthOfVel2_2 = ofDist(0,0,vel2_2.x, vel2_2.y);
+        
+        //musica
+        float soundVolume = ofMap(lengthOfVel, 0,200, 0,1);
+		loopingSound.setVolume(soundVolume);
+		
+		
+		float pitch = ofMap(pos.y, 0, (float)ofGetHeight(), 2.5, 0.1);
+		loopingSound.setSpeed(pitch);
+		
+		float pan = ofMap(pos.x, 0, (float)ofGetWidth(), -1, 1);
+		loopingSound.setPan(pan);
+
 		
 		ofFill();
-		ofSetColor(255,0,0);
+		ofSetColor(171,96,231);
 		ofCircle(pos.x, pos.y, 2 + lengthOfVel/5.0);
         
         
         
-        ofSetColor(0, 255, 0);
+        ofSetColor(99,216,96);
         ofCircle(pos_2.x, pos_2.y, 2 + lengthOfVel_2/5.0);
 		
 		
@@ -98,12 +113,14 @@ void testApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
+    
 	TPR.startDrawing(x,y);
     TPR2.startDrawing(x,y);
 }
 
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button){
+    
 	TPR.endDrawing();
     TPR2.endDrawing();
 	playbackStartTime = ofGetElapsedTimef();
