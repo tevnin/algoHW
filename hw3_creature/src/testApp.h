@@ -2,7 +2,7 @@
 #define _TEST_APP
 
 #include "ofMain.h"
-#include "rectangle.h"
+#include "fish.h"
 
 class testApp : public ofSimpleApp{
 
@@ -20,7 +20,7 @@ class testApp : public ofSimpleApp{
 		void mousePressed(int x, int y, int button);
 		void mouseReleased();
 
-		vector<rectangle> myRectangle;
+		vector<fish> myFish;
 };
 
 #endif

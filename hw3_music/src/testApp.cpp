@@ -28,28 +28,29 @@ void testApp::draw(){
 	float sinOfTime = sin( ofGetElapsedTimef() * 6);
     float cosOfTime = cos( ofGetElapsedTimef() );
 	float sinOfTimeMapped = ofMap( sinOfTime, -1, 1, 500, 100);
+    float cosOfTimeMapped = ofMap( cosOfTime, -1, 1, 500, 100);
     float locX = ofMap(sinOfTime, -1,1,0,ofGetWidth());
     //float locY = ofMap(cosOfTime, -1,1,ofGetHeight()/2-100,ofGetHeight()/2+100);
     float col = ofMap(sinOfTime, -1,1,0,255);
     
     
     
-    rect.x++;
-	rect.y = sinOfTimeMapped*(ofGetElapsedTimef()/10);
+    rect.x = sinOfTimeMapped*(ofGetElapsedTimef()/10);
+	rect.y = cosOfTimeMapped*(ofGetElapsedTimef()/10);
     
     ofPoint temp;
 	temp.x = rect.x;
 	temp.y = rect.y;
 	points.push_back(temp);
-	if (points.size() > 350){
+	if (points.size() > 300){
 		points.erase(points.begin());
 	}
 	
 	
-	ofSetRectMode(OF_RECTMODE_CENTER);
-	ofSetColor(255,0,127);
-	ofFill();
-	ofCircle(rect.x,rect.y,10);
+//	ofSetRectMode(OF_RECTMODE_CENTER);
+//	ofSetColor(255,0,127);
+//	ofFill();
+//	ofCircle(rect.x,rect.y,10);
 	
 	ofSetColor(255,255,255);
     //ofSetColor(col, col, col);

@@ -1,19 +1,20 @@
-#ifndef RECTANGLE_H
-#define RECTANGLE_H
+#ifndef FISH_H
+#define FISH_H
 
 #include "ofMain.h"
 
-class rectangle {
+class fish {
 
 	public:
 	
-        rectangle();
+        fish();
 	
 		void	draw();
 		void	xenoToPoint(float catchX, float catchY);
 	
 		ofPoint		pos;
 		ofPoint		prevPos;
+        ofPoint     tail;
 			
 		float		angle;
         float       radius;
@@ -29,4 +30,4 @@ class rectangle {
 	
 };
 
-#endif // RECTANGLE_H
+#endif // FISH_H

@@ -3,6 +3,8 @@
 
 
 #include "ofMain.h"
+#include "timePoint.h"
+#include "timePointRecorder.h"
 
 class testApp : public ofBaseApp{
 
@@ -18,16 +20,13 @@ class testApp : public ofBaseApp{
 		void mousePressed(int x, int y, int button);
 		void mouseReleased(int x, int y, int button);
 		void windowResized(int w, int h);
-	
-		vector < ofPoint > points;
+
+		
+		timePointRecorder		TPR;
+        timePointRecorder       TPR2;
+		float					playbackStartTime;
 		
 	
-		float radius;
-    
-        float r,g,b,r1,g1,b1,r2,g2,b2;
-        float backR,backG,backB,backR1,backR2,backG1,backG2,backB1,backB2;
-	
-
 };
 
 #endif

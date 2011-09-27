@@ -5,28 +5,21 @@
 void testApp::setup(){
 
 	
-	// macs by default run on non vertical sync, which can make animation very, very fast
-	// this fixes that: 
-	
 	ofSetVerticalSync(true);
-	
-	// set background: 
-	
+
 	ofEnableAlphaBlending();
-	ofBackground(30,30,30);
-	
-	
-	// set the position of the rectangle:
+	ofBackground(153,221,255);
+
     
     for(int i=0; i<6; i++){
         
-        myRectangle.push_back( rectangle() );
+        myFish.push_back( fish() );
         
-        myRectangle[i].radiusA = 21-(2*i);
-        myRectangle[i].radiusB = 50-(2*i);
-        myRectangle[i].pos.x = 100;
-        myRectangle[i].pos.y = 50;
-        //myRectangle[i].interpolateByPct(0);
+        myFish[i].radiusA = 10;
+        myFish[i].radiusB = 20;
+        myFish[i].pos.x = 200;
+        myFish[i].pos.y = 0;
+        
     }
 	
 }
@@ -34,20 +27,21 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
     
-    myRectangle[0].xenoToPoint(mouseX,mouseY);
-    //myRectangle[0].interpolateByPct(pct);
+    myFish[0].xenoToPoint(mouseX,mouseY);
     
-    for(int i=1; i<myRectangle.size(); i++){
-        myRectangle[i].xenoToPoint(myRectangle[i-1].pos.x,myRectangle[i-1].pos.y);
-        //myRectangle[i].interpolateByPct(pct);
+    for(int i=1; i<myFish.size(); i++){
+        myFish[i].xenoToPoint(myFish[i-1].pos.x,myFish[i-1].pos.y);
     }
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    for(int i=0; i<myRectangle.size();i++){
-        myRectangle[i].draw();
+    for(int i=0; i<myFish.size();i++){
+        myFish[i].draw();
     }
+    
+    ofSetRectMode(OF_RECTMODE_CENTER);
+    
 }
 
 //--------------------------------------------------------------
@@ -60,6 +54,7 @@ void testApp::keyReleased  (int key){
 
 //--------------------------------------------------------------
 void testApp::mouseMoved(int x, int y ){
+             
 }
 
 //--------------------------------------------------------------
