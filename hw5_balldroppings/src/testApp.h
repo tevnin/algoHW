@@ -30,8 +30,10 @@ class testApp : public ofSimpleApp{
         ofPoint end;
     
         bool doDraw;
+        float dist;
+        float distStuff;
     
-        ofSoundPlayer loopingSound;
+        
 		
 	
 };

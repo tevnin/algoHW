@@ -7,7 +7,8 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
     
-    ofBackground(46,1,85);
+    //ofBackground(46,1,85);
+    ofBackground(0,0,0);
 	
 	
 	for (int i = 0; i < 1000; i++){
@@ -22,8 +23,8 @@ void testApp::setup(){
 	}
 	
     frameCounter = 0;
-    middleX = ofRandom(ofGetWidth());
-    middleY = ofRandom(ofGetHeight());
+    middleX = ofRandom(100, ofGetWidth() - 100);
+    middleY = ofRandom(100, ofGetHeight() - 100);
     
     ofSetColor(ofRandom(255),31,83);
 }
@@ -31,12 +32,6 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
 
-	// on every frame 
-	// we reset the forces
-	// add in any forces on the particle
-	// perfom damping and
-	// then update
-	
 	
 	for (int i = 0; i < particles.size(); i++){
 		particles[i].resetForce();
@@ -46,19 +41,36 @@ void testApp::update(){
 	}
     
     frameCounter++;
-    middleX = ofRandom(ofGetWidth());
-    middleY = ofRandom(ofGetHeight());
+    middleX = ofRandom(100, ofGetWidth() - 100);
+    middleY = ofRandom(100, ofGetHeight() - 100);
 
 }
 
 //--------------------------------------------------------------
-void testApp::draw(){
-
-	
+void testApp::draw(){	
 	
 	for (int i = 0; i < particles.size(); i++){
 		particles[i].draw();
+        
+        ofPoint temp;
+        temp.x = particles[i].pos.x;
+        temp.y = particles[i].pos.y;
+        points.push_back(temp);
+        if (points.size() > 1000){
+            points.erase(points.begin());
+        }
+
 	}
+
+    
+    //ofNoFill();
+//	ofSetColor(255, 255, 255);
+//	for (int i = 0; i < points.size(); i++){
+//        ofBeginShape();
+//		ofVertex(points[i].x, points[i].y);
+//        ofEndShape();
+//	}
+	
     
     if(frameCounter%120 == 0){
         ofSetColor(ofRandom(255),31,83);
@@ -69,6 +81,8 @@ void testApp::draw(){
             
         }
     }
+    
+    
 
 }
 

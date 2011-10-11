@@ -105,3 +105,4 @@ apps/*/*/bin
 .csettings
 
 *.zip
+/andy_ballDroppings1/

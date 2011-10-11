@@ -17,10 +17,19 @@ class bar{
     
     ofVec2f pos1;
     ofVec2f pos2;
+    float barAngle;
+    float barDist;
+//    ofSoundPlayer loopingSound;
     
     bar();
+    void setup();
     void update();
-    void draw(int _x1, int _y1, int _x2, int _y2);
+    void drawPos1(int x1, int y1);
+    void drawPos2(int x2, int y2);
+    void barInfo();
+    void draw();
+    void sound();
+    
     
 
 };

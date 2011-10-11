@@ -24,6 +24,7 @@ class testApp : public ofSimpleApp{
 		
 		// let's make a vector of them
 		vector <particle> particles;
+        vector <ofPoint> points;
     
         int frameCounter;
         int middleX;

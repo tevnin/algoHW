@@ -5,21 +5,19 @@
 void testApp::setup(){	
 	
 	ofSetVerticalSync(true);
-	ofSetFrameRate(60);
+	ofSetFrameRate(30);
 	
 	ofBackground(0, 0, 0);
 	
-	p.setInitialCondition(300,300,ofRandom(-1,1), ofRandom(-1,1));
+	//p.setInitialCondition(300,300,ofRandom(-1,1), ofRandom(-1,1));
+    p.setup();
     
     start = 0;
     end = 0;
     
     doDraw = false;
     
-    loopingSound.loadSound("drawbar_c4_a.aif");
-	loopingSound.setVolume(0);
-	loopingSound.setLoop(true);
-	loopingSound.play();
+    
 }
 
 //--------------------------------------------------------------
@@ -27,11 +25,16 @@ void testApp::update(){
 
 	p.update();
     
-    for(int i=0; i<line.size(); i++){
-        if(ofDist(p.pos.x, p.pos.y, line[i].x, line[i].y) == 0){
-            p.vel.y *= -1;
+        
+
+        distStuff = ofDist(p.pos.x, p.pos.y, b.pos1.x+cos(b.barAngle*b.barDist), b.pos1.y+sin(b.barAngle*b.barDist));
+
+        if(distStuff <= 25){
+            p.bounce(b.barAngle);
+            //p.sound();
         }
-    }
+
+
     
 }
 
@@ -43,38 +46,33 @@ void testApp::draw(){
     
     
     if(ofGetFrameNum()%60 == 0){
-        p.setInitialCondition(ofGetWidth()/2,100,0,10);
+        
     }
 
     ofFill();
 	ofSetColor(0xffffff);
 	p.draw();
     
-    if(doDraw == true){
-        b.draw(start.x,start.y,end.x,end.y);
-    }
+    //if(doDraw == true){
+        b.draw();
+    //}
     
-    //musica
-    //float soundVolume = ofMap(line[0].x, 0,200, 0,1);
-    loopingSound.setVolume(30);
+    /*ofDrawBitmapString("distStuff = "+ofToString(distStuff), 10, 10);
+    ofDrawBitmapString("p.vel.y = "+ofToString(p.vel.y), 10, 30);
+    ofDrawBitmapString("barAngle = "+ofToString(b.barAngle), 10, 50);
+    ofDrawBitmapString("barDist = "+ofToString(b.barDist), 10, 60);
+    ofDrawBitmapString("b.pos1.x+cos(b.barAngle*b.barDist)-ofGetWidth()/2 = "+ofToString(b.pos1.x+cos(b.barAngle*b.barDist)-ofGetWidth()/2), 10, 80);
     
-    
-    float pitch = ofMap(p.pos.y, 0, (float)ofGetHeight(), 2.5, 0.1);
-    loopingSound.setSpeed(pitch);
-    
-    float pan = ofMap(p.pos.x, 0, (float)ofGetWidth(), -1, 1);
-    loopingSound.setPan(pan);
-    
-    ofFill();
-    ofSetColor(255, 255, 255);
-    for(int i=0; i<line.size(); i++){
-        ofDrawBitmapString(ofToString(ofDist(p.pos.x, p.pos.y, line[i].x, line[i].y)), 10, 100);
-    }
+    ofDrawBitmapString("p.pos.x = "+ofToString(p.pos.x)+" p.pos.y = "+ofToString(p.pos.y), 10, 120);
+    ofDrawBitmapString("b.pos1.x = "+ofToString(b.pos1.x)+" b.pos1.y = "+ofToString(b.pos1.y), 10, 140);*/
 
 }
 
 //--------------------------------------------------------------
-void testApp::keyPressed  (int key){ 
+void testApp::keyPressed  (int key){
+    if(key == 'b' || key == 'B'){
+        p.setInitialCondition(ofGetWidth()/2,100,0,10);
+    }
 }
 
 //--------------------------------------------------------------
@@ -87,32 +85,19 @@ void testApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
-    
-    ofPoint temp;
-	temp.x = x;
-	temp.y = y;
-	line.push_back(temp);
+    b.drawPos2(x, y);
 }
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-	
-    line.clear();
-	ofPoint temp;
-	temp.x = x;
-	temp.y = y;
-	line.push_back(temp);
-    
-    start.x = line[0].x;
-    start.y = line[0].y;
-    
+    b.drawPos1(x, y);
     doDraw = false;
 }
 
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button){
-    end.x = line[line.size()-1].x;
-    end.y = line[line.size()-1].y;
+    
+    
     
     doDraw = true;
     

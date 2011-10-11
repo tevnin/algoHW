@@ -175,11 +175,11 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				9261315014239FBF006BDDA6 /* main.cpp */,
+				9261314F14239FBF006BDDA6 /* testApp.h */,
+				9261315214239FBF006BDDA6 /* testApp.cpp */,
 				92E984D91432181A009B9FA1 /* particle.h */,
 				92E984DA1432181A009B9FA1 /* particle.cpp */,
-				9261314F14239FBF006BDDA6 /* testApp.h */,
-				9261315014239FBF006BDDA6 /* main.cpp */,
-				9261315214239FBF006BDDA6 /* testApp.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
