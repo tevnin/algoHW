@@ -390,6 +390,47 @@ void vectorField::addVectorCircle(float x, float y, float vx, float vy, float ra
     }
 }
 
+//------------------------------------------------------------------------------------
+void vectorField::addLava(float x, float y, float radius, float strength){
+    float changeForce=0.00005;
+	
+	// convert xpos and ypos into pcts = 
+	float xPct = x / (float)externalWidth;
+	float yPct = y / (float)externalHeight;
+	float radiusPct		= radius / (float)externalWidth; 
+    //	// if we are less then 0 or greater then 1 in x or y, return no force.
+    //	if ((xPct < 0 || xPct > 1) || (yPct < 0 || yPct > 1)){
+    //		return;	
+    //	} 
+	
+    // where are we in the array
+    int fieldPosX = (int)(xPct * fieldWidth);
+    int fieldPosY = (int)(yPct * fieldHeight);
+    float fieldRadius	= (float)(radiusPct * fieldWidth);
+	
+	// pos in array
+    int pos = fieldPosY * fieldWidth + fieldPosX;
+	
+	//float curAngle=atan2(field[pos].y, field[pos].x);
+	//float newAngle=curAngle;
+	//if (curAngle>angle)
+	//	newAngle-=changeForce;
+	//else
+	//	newAngle+=changeForce;
+	
+	
+	float distance = (float)sqrt((field[pos].x)*(field[pos].x) +
+								 (field[pos].y)*(field[pos].y));
+	
+	//reset the vector to match the new angle with the same distance
+	//field[pos].set(distance,distance);
+    float pct = 1.0f - (distance / fieldRadius);
+    float strongness = strength * pct;
+    field[pos].x += 1.0 * strongness;   
+    field[pos].y += 1.0 * strongness;
+}
+
+
 
 
 //------------------------------------------------------------------------------------

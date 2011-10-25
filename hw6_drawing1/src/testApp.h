@@ -29,7 +29,9 @@ class testApp : public ofSimpleApp{
 		float prevMouseX;
 		float prevMouseY;
     
-        float   forceX, forceY;
+        float radius;
+    
+//        ofSoundPlayer loopingSound;
 	
 	
 };

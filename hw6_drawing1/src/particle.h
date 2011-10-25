@@ -9,6 +9,7 @@ class particle
         ofVec2f pos;
         ofVec2f vel;
         ofVec2f frc;   // frc is also know as acceleration (newton says "f=ma")
+        int radius;
 			
         particle();
 		virtual ~particle(){};
@@ -17,13 +18,14 @@ class particle
         void addForce(float x, float y);
         void addDampingForce();
         void setInitialCondition(float px, float py, float vx, float vy);
-        void update(float x, float y);
+        void update();
         void draw();
 	
 		void bounceOffWalls();
 	
 	
 		float damping;
+        ofSoundPlayer loopingSound;
 
     protected:
     private:

@@ -36,6 +36,7 @@ class vectorField {
         void addClockwiseCircle(float x, float y, float radius, float strength);
         void addCounterClockwiseCircle(float x, float y, float radius, float strength);
         void addVectorCircle(float x, float y, float vx, float vy, float radius, float strength);
+        void addLava(float x, float y, float radius, float strength);
 
     protected:
     private:
